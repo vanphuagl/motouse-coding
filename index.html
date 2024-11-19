@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <!-- @meta -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="title" content="たまご専門店 本巣ヱ">
+    <meta name="description" content="ふわふわトロトロの濃厚なたまごパン。創業150有余年の老舗旅館の秘伝レシピで焼き上げる。お客様の健康とご多幸を願う栄養満点の謹製品">
+    <meta name="keywords"
+        content="webgl, branding design, development, css, html, react js, scss, gsap, coding, ux/ui design, front-end, web design, web development, phu nguyen, hi991016, creative design, creative dev, art direction, agency, creativ, studio, ux design, storytelling, javascript, animated,typographic, jQuery, responsive">
+
+    <!-- @meta facebook -->
+    <meta property="og:locale" content="en">
+    <meta property="og:type" content="article">
+    <meta property="og:site_name" content="たまご専門店 本巣ヱ">
+    <meta property="og:title" content="たまご専門店 本巣ヱ">
+    <meta property="og:description" content="ふわふわトロトロの濃厚なたまごパン。創業150有余年の老舗旅館の秘伝レシピで焼き上げる。お客様の健康とご多幸を願う栄養満点の謹製品">
+    <meta property="og:image" content="https://motosue.co.jp/assets/img/ogp.png">
+    <meta property="og:url" content="https://motosue.co.jp/">
+
+    <!-- @meta twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:site" content="たまご専門店 本巣ヱ">
+    <meta property="twitter:title" content="たまご専門店 本巣ヱ">
+    <meta property="twitter:description" content="ふわふわトロトロの濃厚なたまごパン。創業150有余年の老舗旅館の秘伝レシピで焼き上げる。お客様の健康とご多幸を願う栄養満点の謹製品">
+    <meta property="twitter:image" content="https://motosue.co.jp/assets/img/ogp.png">
+
+    <link rel="canonical" href="https://motosue.co.jp/">
+    <link rel="icon" href="/favicon.ico">
+
+    <!-- @master css -->
+    <link rel="stylesheet" href="/assets/css/style.min.css?ver=1.0">
+
+    <!-- @adobe fonts -->
+    <script>
+        (function (d) {
+            var config = {
+                kitId: 'net6zje',
+                scriptTimeout: 3000,
+                async: true
+            },
+                h = d.documentElement, t = setTimeout(function () { h.className = h.className.replace(/\bwf-loading\b/g, "") + " wf-inactive"; }, config.scriptTimeout), tk = d.createElement("script"), f = false, s = d.getElementsByTagName("script")[0], a; h.className += " wf-loading"; tk.src = 'https://use.typekit.net/' + config.kitId + '.js'; tk.async = true; tk.onload = tk.onreadystatechange = function () { a = this.readyState; if (f || a && a != "complete" && a != "loaded") return; f = true; clearTimeout(t); try { Typekit.load(config) } catch (e) { } }; s.parentNode.insertBefore(tk, s)
+        })(document);
+    </script>
+
+    <title>Motouse</title>
+</head>
+
+<body>
+    <div class="homepage">
+        <!-- @loading -->
+        <div class="c-loading" data-loading>
+            <div class="c-loading_container">
+                <div class="c-loading_logo" data-loading-logo>
+                    <img src="/assets/img/logo_black.webp" alt="本巣ヱ" width="74" height="269" draggable="false">
+                </div>
+            </div>
+        </div>
+        <!-- @@loading -->
+
+        <!-- @header -->
+        <header class="c-header">
+            <div class="c-header_container">
+                <div class="c-header_left sp-only" data-header-change>
+                    <p data-menu-toggler>Menu</p>
+                </div>
+
+                <div class="c-header_right" data-header-change data-menu-logo>
+                    <ul class="c-header_nav pc-only">
+                        <li><a href="#about" data-scrollto="about">本巣ヱについて</a></li>
+                        <li><a href="#feature" data-scrollto="feature">こだわり</a></li>
+                        <li><a href="#product" data-scrollto="product">商品一覧</a></li>
+                        <li><a href="#store" data-scrollto="store">店舗</a></li>
+                        <li><a href="#contact" data-scrollto="contact">お問い合わせ</a></li>
+                    </ul>
+                    <img src="/assets/img/logo_black.webp" alt="本巣ヱ" width="45" height="165" draggable="false">
+                </div>
+
+                <div class="c-header_menu" data-menu>
+                    <ul>
+                        <li><a href="#about" data-scrollto="about" data-menu-link>本巣ヱについて</a></li>
+                        <li><a href="#feature" data-scrollto="feature" data-menu-link>こだわり</a></li>
+                        <li><a href="#product" data-scrollto="product" data-menu-link>商品一覧</a></li>
+                        <li><a href="#store" data-scrollto="store" data-menu-link>店舗</a></li>
+                        <li><a href="#contact" data-scrollto="contact" data-menu-link>お問い合わせ</a></li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+        <!-- @@header -->
+
+        <!-- @main -->
+        <main>
+            <!-- firstview// -->
+            <section class="fv">
+                <div class="fv_container">
+                    <div class="fv_video" id="fvVideo">
+                    </div>
+                    <div class="fv_overlay"></div>
+
+                    <h1 class="fv_center">
+                        <img src="/assets/img/logo_white.webp" alt="本巣ヱ" width="74" height="269" draggable="false">
+                    </h1>
+
+                    <div class="fv_bottom">
+                        <div class="fv_notice">
+                            <p>お知らせ</p>
+                            <a href="http://" target="_blank" rel="noopener noreferrer">簡易的な一文が入ります簡易的な一文が入ります</a>
+                        </div>
+                        <div class="fv_line">
+                            <span></span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- //firstview -->
+
+            <!-- about// -->
+            <section class="about" id="about" data-offsettop>
+                <div class="about_container">
+                    <figure class="about_thumb">
+                        <img class="lazy" data-src="/assets/img/about.webp" alt="About" width="675.7" height="412"
+                            loading="lazy">
+                    </figure>
+
+                    <div class="about_content">
+                        <div class="about_content_items">
+                            <p>たまご専門 本巣ヱ（もとすえ）は</p>
+                            <p>京都最北の地で明治元年からつづく</p>
+                            <p>料亭旅館から生まれました。</p>
+                        </div>
+                        <div class="about_content_items">
+                            <p>私たちがお届けする栄養満点のたまご菓子は、</p>
+                            <p>人々のご健康とご多幸を願て、</p>
+                            <p>お祝い事や記念日のために </p>
+                            <p>ひとつひとつ丁寧に仕上げる謹製品。</p>
+                        </div>
+                        <div class="about_content_items">
+                            <p>本巣ヱという名前にも、</p>
+                            <p>すべての幸せの根源という意味が</p>
+                            <p>込められています。</p>
+                        </div>
+                        <div class="about_content_items">
+                            <p>長年にわたり脈々と</p>
+                            <p>伝統を受け継ぐ老舗旅館がたどり着いた、</p>
+                            <p>秘伝製法によるふんわりとろける口どけと、</p>
+                            <p>濃厚でまろやかな美味しさを</p>
+                            <p>お楽しみください。</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- //about -->
+
+            <!-- feature// -->
+            <div class="feature" id="feature">
+                <div class="feature_container">
+                    <div class="feature_wrapper">
+                        <div class="feature_heading">
+                            <div class="logo">
+                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    width="65" height="59.605" viewBox="0 0 65 59.605">
+                                    <defs>
+                                        <clipPath id="clip-path-feature">
+                                            <rect id="Rectangle_5" data-name="Rectangle 5" width="65" height="59.605" />
+                                        </clipPath>
+                                    </defs>
+                                    <g id="Group_15" data-name="Group 15" transform="translate(0 0)">
+                                        <g id="Group_14" data-name="Group 14" transform="translate(0 0)"
+                                            clip-path="url(#clip-path-feature)">
+                                            <path id="Path_1" data-name="Path 1"
+                                                d="M53.47,15.486C53.47,28.611,42.035,31.632,34,30.861c-8.39-.805-18.511-6.593-18.511-15.375S25.614.917,34,.112c8.031-.77,19.466,2.25,19.466,15.375"
+                                                transform="translate(11.514 0.001)" />
+                                            <path id="Path_2" data-name="Path 2"
+                                                d="M35.267,44.83c-8.05,0-13.4-6.133-13.686-13.686-.3-8.067,6.127-13.686,13.686-13.686S49.326,22.47,48.953,31.144C48.629,38.7,43.237,44.83,35.267,44.83"
+                                                transform="translate(16.031 12.975)" />
+                                            <path id="Path_3" data-name="Path 3"
+                                                d="M.014,31.911c0-13.124,11.435-16.145,19.466-15.375,8.39.805,18.511,6.593,18.511,15.375S27.87,46.481,19.48,47.286C11.449,48.057.014,45.036.014,31.911"
+                                                transform="translate(0.01 12.207)" />
+                                            <path id="Path_4" data-name="Path 4"
+                                                d="M13.71,1.033c7.558,0,13.407,6.133,13.686,13.686C27.722,23.527,21.269,28.4,13.71,28.4S-.452,22.741.024,14.719C.471,7.174,6.152,1.033,13.71,1.033"
+                                                transform="translate(0 0.768)" />
+                                        </g>
+                                    </g>
+                                </svg>
+
+                                <div class="txt">
+                                    <h2>本巣ヱのこだわり</h2>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="feature_inner">
+                            <div class="feature_swiper" data-feature-swiper>
+                                <div class="swiper-wrapper">
+                                    <div class="feature_slide swiper-slide">
+                                        <h3>材料は、ほぼ卵だけ。</h3>
+                                        <div class="feature_content">
+                                            <p>驚くほど濃厚な風味が自慢のたまごパンですが、</p>
+                                            <p>実は余計な味付けはほとんどしていません。</p>
+                                            <p>使用するのはこだわり抜いた卵のほかに、</p>
+                                            <p>米粉や米酢、酒粕などの体に優しい素材のみ。</p>
+                                            <p>卵の豊かな風味を最大限に生かしながら、</p>
+                                            <p>長時間の蒸上げ製法で、</p>
+                                            <p>驚きのとろける食感に仕上げました。</p>
+                                        </div>
+                                    </div>
+                                    <div class="feature_slide swiper-slide">
+                                        <h3>手間ひまが、美味しさの秘密。</h3>
+                                        <div class="feature_content">
+                                            <p>本巣ヱのたまごパンは、卵を割るところから</p>
+                                            <p>焼き上がりまでのすべての工程で手づくりにこだわり、</p>
+                                            <p>職人がお店の中でひとつひとつ丁寧に仕上げています。</p>
+                                            <p>あの不思議なふわとろ食感の美味しいたまごパンは、</p>
+                                            <p>非効率なほどの手間ひまからできあがります。</p>
+                                        </div>
+                                    </div>
+                                    <div class="feature_slide swiper-slide">
+                                        <h3>たまごにまじめ</h3>
+                                        <div class="feature_content">
+                                            <p>私たちの商品は、お客様へのおもてなしを</p>
+                                            <p>信条とする老舗旅館が選び抜いた、</p>
+                                            <p>契約生産者のこだわりの原料でつくられています。</p>
+                                            <p>とりわけ鶏卵は、商品の特徴である</p>
+                                            <p>濃厚で滋味深い味わいに適したものだけを厳選し、</p>
+                                            <p>安全面に関しても徹底して、餌や飼育方法まで徹底した</p>
+                                            <p>こだわりあるものだけを使用。</p>
+                                            <p>お客様の心と体に美味しい商品づくりに、</p>
+                                            <p>日々取り組んでおります。</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="swiper-button-next">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="25.707" height="11.414"
+                                        viewBox="0 0 25.707 11.414">
+                                        <g id="Group_13" data-name="Group 13" transform="translate(-544.293 -2319.293)">
+                                            <line id="Line_8" data-name="Line 8" x2="25" transform="translate(545 2325)"
+                                                fill="none" stroke="#000" stroke-width="1" />
+                                            <line id="Line_9" data-name="Line 9" x1="5" y2="5"
+                                                transform="translate(545 2320)" fill="none" stroke="#000"
+                                                stroke-linecap="square" stroke-width="1" />
+                                            <line id="Line_11" data-name="Line 11" x1="5" y1="5"
+                                                transform="translate(545 2325)" fill="none" stroke="#000"
+                                                stroke-linecap="square" stroke-width="1" />
+                                        </g>
+                                    </svg>
+                                </div>
+                                <div class="swiper-button-prev"></div>
+                                <div class="swiper-pagination"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- //feature -->
+
+            <!-- product// -->
+            <div class="product" id="product">
+                <div class="product_container"></div>
+            </div>
+            <!-- //product -->
+
+            <!-- store// -->
+            <div class="store" id="store">
+                <div class="store_container">
+                    <div class="store_nav">
+                        <ul>
+                            <li class="active">麻布十番本店</li>
+                            <li>城崎温泉店</li>
+                        </ul>
+                        <span class="indicator"></span>
+                    </div>
+
+                    <div class="store_tabs">
+                        <!-- ## -->
+                        <div class="store_content active">
+                            <picture class="store_thumb">
+                                <source media="(max-width: 1023px)" data-srcset="/assets/img/store_tab_1_sp.webp">
+                                <img class="lazy" draggable="false" data-src="/assets/img/store_tab_1.webp" alt="麻布十番本店"
+                                    width="1340" height="670" loading="lazy">
+                            </picture>
+
+                            <div class="store_inner">
+                                <div class="store_left">
+                                    <p>
+                                        たまご専門 本巣ヱ <br />
+                                        麻布十番本店
+                                    </p>
+                                    <a href="https://www.instagram.com/motosue_tokyo/" class="instagram" target="_blank"
+                                        rel="noopener noreferrer">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            viewBox="0 0 20 20">
+                                            <g id="ig" transform="translate(-24 -24)">
+                                                <g id="Group_70" data-name="Group 70" transform="translate(24 24)">
+                                                    <path id="Path_7" data-name="Path 7"
+                                                        d="M38.583,44H29.417A5.423,5.423,0,0,1,24,38.583V29.417A5.423,5.423,0,0,1,29.417,24h9.167A5.423,5.423,0,0,1,44,29.417v9.167A5.423,5.423,0,0,1,38.583,44ZM29.417,25.667a3.754,3.754,0,0,0-3.75,3.75v9.167a3.754,3.754,0,0,0,3.75,3.75h9.167a3.754,3.754,0,0,0,3.75-3.75V29.417a3.754,3.754,0,0,0-3.75-3.75Z"
+                                                        transform="translate(-24 -24)" />
+                                                </g>
+                                                <g id="Group_71" data-name="Group 71" transform="translate(29 29)">
+                                                    <path id="Path_8" data-name="Path 8"
+                                                        d="M49,54a5,5,0,1,1,5-5A5.006,5.006,0,0,1,49,54Zm0-8.333A3.333,3.333,0,1,0,52.333,49,3.337,3.337,0,0,0,49,45.667Z"
+                                                        transform="translate(-44 -44)" />
+                                                </g>
+                                                <g id="Group_72" data-name="Group 72"
+                                                    transform="translate(38.167 27.542)">
+                                                    <circle id="Ellipse_2" data-name="Ellipse 2" cx="1.146" cy="1.146"
+                                                        r="1.146" />
+                                                </g>
+                                            </g>
+                                        </svg>
+                                    </a>
+                                </div>
+                                <div class="store_right">
+                                    <div class="store_info">
+                                        <h3>〒106-0045 東京都港区⿇布⼗番2-14-11</h3>
+                                        <table>
+                                            <tbody>
+                                                <tr>
+                                                    <th>定休日</th>
+                                                    <td>:</td>
+                                                    <td>火曜日</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>営業時間</th>
+                                                    <td>:</td>
+                                                    <td>11:00〜18:00〔売り切れ次第終了〕</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>電話番号</th>
+                                                    <td>:</td>
+                                                    <td>03-6453-7133</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                    <div class="store_list">
+                                        <div class="store_accordion">
+                                            <div class="store_accordion_btn js-collapse">
+                                                <p class="title">モバイルオーダーについて</p>
+                                                <div class="plus">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"
+                                                        viewBox="0 0 12 12">
+                                                        <g id="Group_51" data-name="Group 51"
+                                                            transform="translate(-103 -271)">
+                                                            <line id="Line_13" data-name="Line 13" x2="12"
+                                                                transform="translate(103 277)" fill="none" stroke="#000"
+                                                                stroke-width="1" />
+                                                            <line id="Line_14" data-name="Line 14" x2="12"
+                                                                transform="translate(109 271) rotate(90)" fill="none"
+                                                                stroke="#000" stroke-width="1" />
+                                                        </g>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <div class="store_accordion_panel js-panel">
+                                                <div class="store_accordion_content">
+                                                    <p>
+                                                        『たまごパンが行列に並んでも買えない。行列ですごくまたされる。』<br class="pc-only" />
+                                                        そんな声にお応えするため、テイクアウトの事前予約ができる「モバイルオーダー」を承っております。店頭に来る前に「たまごパン」を確実にご購入いただけます。
+                                                    </p>
+                                                    <p class="notes">※ モバイルオーダーで「完売」でも店頭販売分のご用意がございます。</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- ## -->
+                                        <div class="store_accordion">
+                                            <div class="store_accordion_btn js-collapse">
+                                                <p class="title">焼き上がり時間</p>
+                                                <div class="plus">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"
+                                                        viewBox="0 0 12 12">
+                                                        <g id="Group_51" data-name="Group 51"
+                                                            transform="translate(-103 -271)">
+                                                            <line id="Line_13" data-name="Line 13" x2="12"
+                                                                transform="translate(103 277)" fill="none" stroke="#000"
+                                                                stroke-width="1" />
+                                                            <line id="Line_14" data-name="Line 14" x2="12"
+                                                                transform="translate(109 271) rotate(90)" fill="none"
+                                                                stroke="#000" stroke-width="1" />
+                                                        </g>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <div class="store_accordion_panel js-panel">
+                                                <div class="store_accordion_content">
+                                                    <p>
+                                                        行列を避けるために、たまごパン引換券を配布しております。
+                                                    </p>
+                                                    <table>
+                                                        <tr>
+                                                            <th>第一回 焼き上がり</th>
+                                                            <td>－</td>
+                                                            <td>11:00</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>第二回 焼き上がり</th>
+                                                            <td>－</td>
+                                                            <td>12:30</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>第三回 焼き上がり</th>
+                                                            <td>－</td>
+                                                            <td>14:00</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>第四回 焼き上がり</th>
+                                                            <td>－</td>
+                                                            <td>15:30</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>第五回 焼き上がり</th>
+                                                            <td>－</td>
+                                                            <td>17:00</td>
+                                                        </tr>
+                                                    </table>
+                                                    <p class="notes">
+                                                        ※ 多少時間が前後する場合がございます。<br />
+                                                        ※ 商品が売り切れ次第終了となります。<br />
+                                                        ※ 行列が長くなりすぎた等の場合、入店規制をさせていただくことがございます。ご了承ください。
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="store_group">
+                                        <a href="https://maps.app.goo.gl/RCLkZzf6mRrszFsYA" target="_blank"
+                                            rel="noopener noreferrer">Google Map</a>
+                                        <a href="https://motosue.lbb-r.com/store/detail/?store_id=12980" target="_blank"
+                                            rel="noopener noreferrer">モバイルオーダー</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- ## -->
+                        <div class="store_content">
+                            <picture class="store_thumb">
+                                <source media="(max-width: 1023px)" data-srcset="/assets/img/store_tab_2_sp.webp">
+                                <img class="lazy" draggable="false" data-src="/assets/img/store_tab_2.webp" alt="城崎温泉店"
+                                    width="1340" height="670" loading="lazy">
+                            </picture>
+
+                            <div class="store_inner">
+                                <div class="store_left">
+                                    <p>
+                                        たまご専門 本巣ヱ <br />
+                                        城崎温泉店
+                                    </p>
+                                    <a href="https://www.instagram.com/motosue_official/" class="instagram"
+                                        target="_blank" rel="noopener noreferrer">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+                                            viewBox="0 0 20 20">
+                                            <g id="ig" transform="translate(-24 -24)">
+                                                <g id="Group_70" data-name="Group 70" transform="translate(24 24)">
+                                                    <path id="Path_7" data-name="Path 7"
+                                                        d="M38.583,44H29.417A5.423,5.423,0,0,1,24,38.583V29.417A5.423,5.423,0,0,1,29.417,24h9.167A5.423,5.423,0,0,1,44,29.417v9.167A5.423,5.423,0,0,1,38.583,44ZM29.417,25.667a3.754,3.754,0,0,0-3.75,3.75v9.167a3.754,3.754,0,0,0,3.75,3.75h9.167a3.754,3.754,0,0,0,3.75-3.75V29.417a3.754,3.754,0,0,0-3.75-3.75Z"
+                                                        transform="translate(-24 -24)" />
+                                                </g>
+                                                <g id="Group_71" data-name="Group 71" transform="translate(29 29)">
+                                                    <path id="Path_8" data-name="Path 8"
+                                                        d="M49,54a5,5,0,1,1,5-5A5.006,5.006,0,0,1,49,54Zm0-8.333A3.333,3.333,0,1,0,52.333,49,3.337,3.337,0,0,0,49,45.667Z"
+                                                        transform="translate(-44 -44)" />
+                                                </g>
+                                                <g id="Group_72" data-name="Group 72"
+                                                    transform="translate(38.167 27.542)">
+                                                    <circle id="Ellipse_2" data-name="Ellipse 2" cx="1.146" cy="1.146"
+                                                        r="1.146" />
+                                                </g>
+                                            </g>
+                                        </svg>
+                                    </a>
+                                </div>
+                                <div class="store_right">
+                                    <div class="store_info">
+                                        <h3>〒669-6101 兵庫県豊岡市城崎町湯島97</h3>
+                                        <table>
+                                            <tbody>
+                                                <tr>
+                                                    <th>定休日</th>
+                                                    <td>:</td>
+                                                    <td>水曜日</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>営業時間</th>
+                                                    <td>:</td>
+                                                    <td>10:00〜17:00〔売り切れ次第終了〕</td>
+                                                </tr>
+                                                <tr>
+                                                    <th>電話番号</th>
+                                                    <td>:</td>
+                                                    <td>0796-32-0755</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                    <div class="store_list">
+                                        <div class="store_accordion">
+                                            <div class="store_accordion_btn js-collapse">
+                                                <p class="title">モバイルオーダーについて</p>
+                                                <div class="plus">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"
+                                                        viewBox="0 0 12 12">
+                                                        <g id="Group_51" data-name="Group 51"
+                                                            transform="translate(-103 -271)">
+                                                            <line id="Line_13" data-name="Line 13" x2="12"
+                                                                transform="translate(103 277)" fill="none" stroke="#000"
+                                                                stroke-width="1" />
+                                                            <line id="Line_14" data-name="Line 14" x2="12"
+                                                                transform="translate(109 271) rotate(90)" fill="none"
+                                                                stroke="#000" stroke-width="1" />
+                                                        </g>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <div class="store_accordion_panel js-panel">
+                                                <div class="store_accordion_content">
+                                                    <p>
+                                                        『たまごパンが行列に並んでも買えない。行列ですごくまたされる。』<br class="pc-only" />
+                                                        そんな声にお応えするため、テイクアウトの事前予約ができる「モバイルオーダー」を承っております。店頭に来る前に「たまごパン」を確実にご購入いただけます。
+                                                    </p>
+                                                    <div class="list">
+                                                        <p><span>①</span>ご予約は当日分のみとなります。日が変わる0:00より受付開始となります。</p>
+                                                        <p><span>②</span>ご予約分はお受け取り時間が過ぎましても、閉店17:00までお預かりさせて頂きます。</p>
+                                                        <p><span>③</span>東京店、城崎店がございます。受け取り店舗をお間違えのないようご注意ください。</p>
+                                                        <p><span>④</span>受け渡し時に決済完了時に発行されます「注文番号」が必要となりますのでお控えいただくようお願いいたします。（ご予約画面マイページよりご確認いただけます）
+                                                        </p>
+                                                        <p><span>⑤</span>ご予約に関しましてはお一人あたりの個数制限は致しません。在庫残数がなくなり次第終了とさせて頂きます。
+                                                        </p>
+                                                    </div>
+                                                    <p class="notes">※ モバイルオーダーで「完売」でも店頭販売分のご用意がございます。</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- ## -->
+                                        <div class="store_accordion">
+                                            <div class="store_accordion_btn js-collapse">
+                                                <p class="title">焼き上がり時間</p>
+                                                <div class="plus">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"
+                                                        viewBox="0 0 12 12">
+                                                        <g id="Group_51" data-name="Group 51"
+                                                            transform="translate(-103 -271)">
+                                                            <line id="Line_13" data-name="Line 13" x2="12"
+                                                                transform="translate(103 277)" fill="none" stroke="#000"
+                                                                stroke-width="1" />
+                                                            <line id="Line_14" data-name="Line 14" x2="12"
+                                                                transform="translate(109 271) rotate(90)" fill="none"
+                                                                stroke="#000" stroke-width="1" />
+                                                        </g>
+                                                    </svg>
+                                                </div>
+                                            </div>
+                                            <div class="store_accordion_panel js-panel">
+                                                <div class="store_accordion_content">
+                                                    <p>
+                                                        行列を避けるために、たまごパン引換券を配布しております。
+                                                    </p>
+                                                    <table>
+                                                        <tr>
+                                                            <th>第一回 焼き上がり</th>
+                                                            <td>－</td>
+                                                            <td>11:00</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>第二回 焼き上がり</th>
+                                                            <td>－</td>
+                                                            <td>12:30</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>第三回 焼き上がり</th>
+                                                            <td>－</td>
+                                                            <td>14:00</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>第四回 焼き上がり</th>
+                                                            <td>－</td>
+                                                            <td>15:30</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>第五回 焼き上がり</th>
+                                                            <td>－</td>
+                                                            <td>17:00</td>
+                                                        </tr>
+                                                    </table>
+                                                    <p class="notes">
+                                                        ※ 多少時間が前後する場合がございます。<br />
+                                                        ※ 商品が売り切れ次第終了となります。<br />
+                                                        ※ 行列が長くなりすぎた等の場合、入店規制をさせていただくことがございます。ご了承ください。
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="store_group">
+                                        <a href="https://maps.app.goo.gl/WqadiHgLt2UzKase7" target="_blank"
+                                            rel="noopener noreferrer">Google Map</a>
+                                        <a href="https://motosue.lbb-r.com/store/detail/?store_id=12979" target="_blank"
+                                            rel="noopener noreferrer">モバイルオーダー</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- //store -->
+
+            <!-- contact// -->
+            <section id="contact"></section>
+            <!-- //contact -->
+        </main>
+        <!-- @@main -->
+
+        <!-- @footer -->
+        <footer class="c-footer">
+            <div class="c-footer_container">
+                <h2>お問い合わせ</h2>
+                <div class="c-footer_wrapper">
+                    <div class="c-footer_left">
+                        <a href="#">商品・店舗について</a>
+                        <span class="pc-only">/</span>
+                        <a href="#">採用について</a>
+                        <span class="pc-only">/</span>
+                        <a href="#">取材について</a>
+                        <span class="pc-only">/</span>
+                        <a href="#">出店について</a>
+                    </div>
+                    <div class="c-footer_right">
+                        <div class="group">
+                            <a href="https://www.sumihei.com/" target="_blank" rel="noopener noreferrer">間人温泉 炭平</a>
+                            <a href="https://www.tokitotoki.com/" target="_blank" rel="noopener noreferrer">炭平別邸 季ト時</a>
+                        </div>
+                        <p>© SUMIHEI, INC.</p>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- @@footer -->
+    </div>
+
+    <!-- @script -->
+    <script src="/assets/js/libs.js"></script>
+    <script src="/assets/js/main.js"></script>
+</body>
+
+</html>

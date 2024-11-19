@@ -1,0 +1,83 @@
+/* Footer
+------------------------------------------------------------*/
+
+.c-footer {
+  &_container {
+    padding: 197px 50px 45px;
+
+    h2 {
+      font-size: 1.6rem;
+      font-weight: 300;
+      letter-spacing: 0.64px;
+      line-height: 1.69;
+    }
+
+    @include maxW(1023px) {
+      padding: 117px 22px 20px;
+
+      h2 {
+        font-size: 1.5rem;
+        letter-spacing: 0.6px;
+        line-height: 1.53;
+      }
+    }
+  }
+
+  &_wrapper {
+    margin-top: 8px;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+
+    a,
+    p,
+    span {
+      font-size: 1.4rem;
+      letter-spacing: 0.56px;
+      line-height: 1.59;
+      display: inline-block;
+    }
+
+    @include maxW(1023px) {
+      display: block;
+
+      a,
+      p,
+      span {
+        font-size: 1.3rem;
+        line-height: 1.65;
+        letter-spacing: 0.52px;
+        display: block;
+      }
+    }
+  }
+
+  &_left {
+    span {
+      margin-right: 10px;
+      margin-left: 20px;
+    }
+  }
+
+  &_right {
+    display: flex;
+    justify-content: space-between;
+    gap: 65px;
+
+    .group {
+      display: flex;
+      gap: 25px;
+    }
+
+    @include maxW(1023px) {
+      margin-top: 116px;
+      align-items: flex-end;
+      gap: 15px;
+
+      .group {
+        flex-direction: column;
+        gap: 5px;
+      }
+    }
+  }
+}

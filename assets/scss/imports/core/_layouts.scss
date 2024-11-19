@@ -1,0 +1,44 @@
+/* layout
+------------------------------------------------------------*/
+@-ms-viewport {
+  width: device-width;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+body {
+  width: 100%;
+  max-width: 100%;
+  margin: auto;
+  background-color: $main-bg-cl;
+  color: $main-text-cl;
+  font-family: $main-fonts;
+  font-weight: 300;
+  font-style: normal;
+  font-size: 1.6rem;
+  line-height: 1;
+  position: relative;
+  overflow-x: hidden;
+}
+
+//-------------------------------------------------------
+main {
+  flex: 1;
+}
+
+::selection {
+  background: #ededed;
+  color: #000;
+}

@@ -1,0 +1,141 @@
+/* Header
+------------------------------------------------------------*/
+
+.c-header {
+  &_left {
+    position: fixed;
+    top: 18px;
+    left: 20px;
+    z-index: 10;
+
+    &.is-top {
+      p {
+        color: $black-cl;
+        border-color: $black-cl;
+      }
+    }
+
+    p {
+      font-size: 1.3rem;
+      letter-spacing: 0.52px;
+      text-transform: uppercase;
+      color: $white-cl;
+      padding: 6px 11px;
+      border: 1px solid $white-cl;
+      border-radius: 60px;
+      transition: 0.5s ease-in-out;
+
+      &.is-close {
+        color: $white-cl !important;
+        border-color: $black-cl;
+        background: $black-cl;
+      }
+    }
+  }
+
+  &_right {
+    position: fixed;
+    top: 45px;
+    right: 50px;
+    z-index: 10;
+    mix-blend-mode: multiply;
+
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+
+    &.is-show,
+    &.is-top {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    display: flex;
+    align-items: flex-start;
+    gap: 45px;
+
+    ul {
+      display: flex;
+      flex-direction: row-reverse;
+      gap: 16px;
+
+      li a {
+        font-size: 1.6rem;
+        letter-spacing: 0.64px;
+        color: $black-cl;
+        writing-mode: vertical-rl;
+      }
+    }
+
+    img {
+      width: 45px;
+      height: auto;
+      object-fit: contain;
+    }
+
+    @include maxW(1023px) {
+      top: 18px;
+      right: 20px;
+
+      img {
+        width: 30px;
+      }
+    }
+  }
+
+  &_menu {
+    position: absolute;
+    top: 42px;
+    right: 50px;
+    z-index: 9;
+
+    ul {
+      display: flex;
+      flex-direction: row-reverse;
+      gap: 16px;
+
+      li a {
+        font-size: 1.6rem;
+        letter-spacing: 0.64px;
+        color: $white-cl;
+        writing-mode: vertical-rl;
+      }
+    }
+
+    @include maxW(1023px) {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: auto;
+      width: 100vw;
+      height: 100vh;
+      height: var(--app-height);
+      background-color: $main-bg-cl;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.5s ease-in-out, visibility 0.5s ease-in-out;
+      pointer-events: none;
+
+      &.is-open {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+      }
+
+      ul {
+        background-image: url(/assets/img/bg-noise.webp);
+        width: 100%;
+        height: 100%;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 25px;
+
+        li a {
+          color: $black-cl;
+          writing-mode: initial;
+        }
+      }
+    }
+  }
+}
