@@ -431,6 +431,200 @@
         padding-top: 147px;
       }
     }
+
+    &_heading {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+
+      h2 {
+        font-size: 2rem;
+        font-weight: 300;
+        letter-spacing: 0.8px;
+        line-height: 1.55;
+        writing-mode: vertical-rl;
+      }
+
+      @include maxW(1023px) {
+        display: block;
+
+        h2 {
+          font-size: 1.6rem;
+          letter-spacing: 0.64px;
+          line-height: 1.2;
+          writing-mode: initial;
+        }
+      }
+    }
+
+    &_list {
+      padding: 0 50px;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 40px;
+      grid-auto-flow: dense;
+      direction: rtl;
+
+      @include maxW(1023px) {
+        padding: 0 22px;
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-flow: initial;
+        direction: initial;
+        gap: 20px;
+      }
+    }
+
+    &_items {
+      figure {
+        display: block;
+        z-index: 1;
+        position: relative;
+        height: 100%;
+        padding-bottom: calc(305 / 305 * 100%);
+        background-color: #000;
+
+        img {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+
+      @include maxW(1023px) {
+        &:nth-child(1),
+        &:nth-child(2) {
+          grid-column: 1 / -1;
+        }
+      }
+    }
+
+    &_thumb {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      cursor: pointer;
+      aspect-ratio: 1/1;
+
+      &:hover {
+        .overlay {
+          opacity: 1;
+          pointer-events: auto;
+        }
+      }
+
+      .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: rgba($color: #000, $alpha: 0.7);
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s ease-out;
+
+        &_content {
+          position: absolute;
+          top: 40px;
+          left: 50%;
+          transform: translateX(-50%);
+          height: auto;
+          display: flex;
+          flex-direction: column;
+          gap: 10px;
+          writing-mode: vertical-rl;
+
+          p {
+            font-size: 1.8rem;
+            font-weight: 300;
+            letter-spacing: 0.36px;
+            color: $white-cl;
+            text-align: left;
+          }
+        }
+
+        &_bottom {
+          position: absolute;
+          bottom: 17px;
+          width: 100%;
+          padding: 0 20px;
+
+          display: flex;
+          align-items: center;
+          flex-direction: row-reverse;
+          justify-content: space-between;
+
+          p {
+            font-size: 1.4rem;
+            color: $white-cl;
+          }
+        }
+
+        &_plus {
+          position: relative;
+          width: 14px;
+          height: 14px;
+
+          &:before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 1px;
+            height: 100%;
+            background-color: $white-cl;
+            transform: translateX(-50%);
+          }
+
+          &:after {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background-color: $white-cl;
+            transform: translateY(-50%);
+          }
+        }
+      }
+
+      @include maxW(1023px) {
+        .overlay {
+          opacity: 1;
+          background: none;
+          pointer-events: auto;
+
+          &_content {
+            display: none;
+          }
+
+          &_bottom {
+            width: auto;
+            bottom: 10px;
+            right: 10px;
+            padding: 0;
+            flex-direction: row;
+
+            p {
+              display: none;
+            }
+          }
+
+          &_plus {
+            width: 12px;
+            height: 12px;
+          }
+        }
+      }
+    }
   }
 
   // ===== store =====
