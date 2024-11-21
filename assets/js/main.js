@@ -30,6 +30,8 @@ const init = () => {
       },
     },
   });
+  // # init swiper product
+
 };
 
 // ===== add event on multiple element =====
@@ -57,7 +59,7 @@ const lenis = new Lenis({
   lerp: 0.05,
   smoothWheel: true,
 });
-lenis.on("scroll", (e) => {});
+lenis.on("scroll", (e) => { });
 function raf(time) {
   lenis.raf(time);
   requestAnimationFrame(raf);
@@ -210,6 +212,65 @@ for (let i = 0; i < accordion.length; i++) {
     }
   });
 }
+
+// ===== popup product =====
+let index = 0;
+let swiperProduct;
+
+const lightBox = document.querySelector("[data-modal]");
+const imgLightbox = document.querySelectorAll("[data-modal-toggler]");
+
+const swiperImages = () => {
+  swiperProduct = new Swiper("[data-product-swiper]", {
+    loop: true,
+    speed: 600,
+    fadeEffect: { crossFade: true },
+    effect: "fade",
+    slidesPerView: 1,
+    allowTouchMove: false,
+    navigation: {
+      nextEl: ".modal-button-next",
+      prevEl: ".modal-button-prev",
+    },
+  })
+}
+swiperImages();
+imgLightbox.forEach((item) =>
+  item.addEventListener("click", handleZoomImage)
+);
+
+function handleZoomImage(event) {
+  let image = event.target.parentElement.getAttribute("data-modal-toggler");
+  index = [...imgLightbox].findIndex(
+    (item) => item.getAttribute("data-modal-toggler") === image
+  );
+  swiperProduct.slideTo(index + 1, 0);
+  // #
+  const swiperModalProduct = new Swiper("[data-modal-swiper]", {
+    speed: 1000,
+    fadeEffect: { crossFade: true },
+    effect: "fade",
+    slidesPerView: 1,
+    allowTouchMove: false,
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+    autoplay: {
+      delay: 4000,
+      disableOnInteraction: false,
+    },
+    watchSlidesProgress: true,
+    observer: true,
+  })
+  $("[data-modal]").fadeIn(500);
+}
+
+$("[data-modal-close]").each(function () {
+  $(this).on("click", function () {
+    $("[data-modal]").fadeOut(500);
+  });
+});
 
 // ===== lazy loading =====
 const ll = new LazyLoad({

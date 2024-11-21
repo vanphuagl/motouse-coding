@@ -53,3 +53,99 @@
     }
   }
 }
+
+// ===== popup product =====
+
+.c-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 99;
+  background-color: $main-bg-cl;
+  will-change: opacity;
+  // transition: all 0.35s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+
+  // opacity: 0;
+  // visibility: hidden;
+  // pointer-events: none;
+  display: none;
+
+  &.--show {
+    opacity: 1;
+    visibility: visible;
+    display: block;
+    pointer-events: auto;
+  }
+
+  &_wrapper {
+    width: 100%;
+    height: 100%;
+    background-image: url(/assets/img/bg-noise.webp);
+  }
+
+  &_swiper {
+    width: 100%;
+    height: 100%;
+  }
+
+  &_controls {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    .modal-button-next,
+    .modal-button-prev {
+      cursor: pointer;
+    }
+    
+    .swiper-button-next,
+    .swiper-button-prev {
+      position: unset;
+      width: auto;
+      height: auto;
+      margin: 0;
+
+      &:after {
+        content: "";
+      }
+    }
+  }
+
+  &_close {
+    position: absolute;
+    top: 60px;
+    right: 67px;
+    z-index: 2;
+    cursor: pointer;
+    height: 40px;
+    width: 40px;
+
+    span {
+      &:before,
+      &:after {
+        background: #000;
+        content: "";
+        height: 1px;
+        left: 0;
+        position: absolute;
+        top: 20px;
+        width: 40px;
+      }
+
+      &:before {
+        transform: rotate(45deg);
+      }
+
+      &:after {
+        transform: rotate(-45deg);
+      }
+    }
+  }
+}
