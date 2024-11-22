@@ -11,6 +11,16 @@ main .lazy {
   }
 }
 
+/* u-fade */
+.u-fade {
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out;
+
+  &.--show {
+    opacity: 1;
+  }
+}
+
 /* only device */
 
 .sp-only,

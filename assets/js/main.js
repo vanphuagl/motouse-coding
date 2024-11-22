@@ -66,7 +66,7 @@ const lenis = new Lenis({
   lerp: 0.05,
   smoothWheel: true,
 });
-lenis.on("scroll", (e) => {});
+lenis.on("scroll", (e) => { });
 function raf(time) {
   lenis.raf(time);
   requestAnimationFrame(raf);
@@ -295,7 +295,6 @@ function handleZoomImage(event) {
   index = [...modalToggler].findIndex(
     (item) => item.getAttribute("key-items") === image
   );
-  console.log("index", image, index);
   swiperProduct.slideToLoop(index, 0);
 
   // ## Loop over all of the fetched sliders and apply Swiper on each one.
@@ -314,10 +313,22 @@ $("[data-modal-close]").each(function () {
   });
 });
 
-// ===== button animation =====
-// $(".detail_btn").on("click", function () {
-//   $(this).addClass("active");
-// })
+// ===== fade content =====
+function fadeEffect() {
+  var scrollTop = $(window).scrollTop();
+  var bottom = scrollTop + $(window).height();
+  $(".u-fade").each(function () {
+    if (bottom > $(this).offset().top + 150) {
+      $(this).addClass("--show");
+    } else {
+      $(this).removeClass("--show");
+    }
+  });
+}
+
+$(window).on("pageshow scroll", function () {
+  fadeEffect();
+})
 
 // ===== lazy loading =====
 const ll = new LazyLoad({
