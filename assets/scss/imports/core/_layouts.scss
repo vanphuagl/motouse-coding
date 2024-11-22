@@ -32,8 +32,33 @@ body {
   position: relative;
   overflow-x: hidden;
 
+  &:after {
+    content: "";
+    top: 0;
+    left: 0;
+    background-color: $modal-cl;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    z-index: 1000;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0.5s, opacity 0.5s linear;
+    pointer-events: none;
+  }
+
+  &.--overlay:after {
+    visibility: visible;
+    opacity: 1;
+    transition: visibility 0.5s, opacity 0.5s linear;
+  }
+
+  &.--pointer-none {
+    pointer-events: none !important;
+  }
+
   &.--disable-scroll {
-    overflow: hidden;
+    overflow: hidden !important;
   }
 }
 

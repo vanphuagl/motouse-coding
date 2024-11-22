@@ -4,25 +4,24 @@
 /* lazy loading */
 main .lazy {
   opacity: 0;
-  transition: opacity 0.5s cubic-bezier(0.455, 0.03, 0.515, 0.955);
+  transition: opacity 0.8s ease-in-out;
 
   &.loaded {
     opacity: 1;
   }
 }
 
-/* u-fade */
-.u-fade {
+/* ufade */
+.ufade {
   opacity: 0;
   transition: opacity 0.8s ease-in-out;
 
-  &.--show {
+  &.fadein {
     opacity: 1;
   }
 }
 
 /* only device */
-
 .sp-only,
 .is-hidden {
   display: none !important;

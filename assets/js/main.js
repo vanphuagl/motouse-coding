@@ -30,11 +30,9 @@ const init = () => {
       },
     },
   });
-  // # init swiper product
 };
 
 // ===== add event on multiple element =====
-
 const addEventOnElements = function (elements, eventType, callback) {
   if (elements) {
     for (let i = 0; i < elements.length; i++) {
@@ -51,13 +49,6 @@ const appHeight = () => {
     `${document.documentElement.clientHeight}px`
   );
   //
-  const windowHeight = Math.max(
-    document.documentElement.clientHeight,
-    window.innerHeight || 0
-  );
-  if (window.innerWidth < 1024) {
-    document.querySelector("[data-modal]").style.height = windowHeight + "px";
-  }
 };
 window.addEventListener("resize", appHeight);
 
@@ -66,7 +57,7 @@ const lenis = new Lenis({
   lerp: 0.05,
   smoothWheel: true,
 });
-lenis.on("scroll", (e) => { });
+lenis.on("scroll", (e) => {});
 function raf(time) {
   lenis.raf(time);
   requestAnimationFrame(raf);
@@ -220,115 +211,72 @@ for (let i = 0; i < accordion.length; i++) {
   });
 }
 
-// ===== popup product =====
-let index = 0;
-let swiperProduct;
-const [modalToggler, nextModal, prevModal] = [
-  document.querySelectorAll("[data-modal-toggler]"),
-  document.querySelectorAll(".custom-btn-next"),
-  document.querySelectorAll(".custom-btn-prev"),
-];
+// ===== modal product =====
+$("[data-modal]").on("click", function (event) {
+  event.preventDefault();
+  if (window.innerWidth > 1023) {
+    // lenis.stop();
+  }
 
-const swiperImages = () => {
-  swiperProduct = new Swiper("[data-product-swiper]", {
-    init: false,
-    loop: true,
-    speed: 600,
-    fadeEffect: { crossFade: true },
-    effect: "fade",
-    slidesPerView: 1,
-    allowTouchMove: false,
-    navigation: {
-      nextEl: ".modal-button-next",
-      prevEl: ".modal-button-prev",
-    },
-    observer: true,
-    observeParents: true,
+  $($(this).data("modal")).modal({
+    fadeDuration: 600,
+    fadeDelay: 0.6,
   });
-};
-swiperImages();
 
-// ## Controls modal
-// prevModal.forEach((item) =>
-//   item.addEventListener("click", () => {
-//     swiperProduct.slideNext();
-//   })
-// );
-// nextModal.forEach((item) =>
-//   item.addEventListener("click", () => {
-//     swiperProduct.slideNext();
-//   })
-// );
-
-// ## build Swiper All
-const buildSwiperSlider = (sliderElm) => {
-  const sliderIdentifier = sliderElm.dataset.modalSwiper;
-  return new Swiper(`[data-modal-swiper="${sliderIdentifier}"]`, {
-    speed: 1000,
-    fadeEffect: { crossFade: true },
-    effect: "fade",
-    slidesPerView: 1,
-    initialSlide: 0,
-    allowTouchMove: false,
-    pagination: {
-      el: `.swiper-pagination-m${sliderIdentifier}`,
-      clickable: true,
-    },
-    autoplay: {
-      delay: 3500,
-      disableOnInteraction: false,
-    },
-    watchSlidesProgress: true,
-    observer: true,
-    observeParents: true,
-  });
-};
-
-// ## Action thumb product
-modalToggler.forEach((item) => item.addEventListener("click", handleZoomImage));
-function handleZoomImage(event) {
-  // ## show slide initial
-  // lenis.stop();
-  document.body.classList.add("--disable-scroll");
-  swiperProduct.init();
-  let image = event.target.getAttribute("key-items");
-  index = [...modalToggler].findIndex(
-    (item) => item.getAttribute("key-items") === image
-  );
-  swiperProduct.slideToLoop(index, 0);
-
-  // ## Loop over all of the fetched sliders and apply Swiper on each one.
+  const buildSwiperSlider = (sliderElm) => {
+    // const sliderIdentifier = sliderElm.dataset.modalSwiper;
+    return new Swiper(`[data-modal-swiper]`, {
+      speed: 1000,
+      fadeEffect: { crossFade: true },
+      effect: "fade",
+      slidesPerView: 1,
+      initialSlide: 0,
+      allowTouchMove: false,
+      pagination: {
+        el: `.swiper-pagination`,
+        clickable: true,
+      },
+      autoplay: {
+        delay: 3500,
+        disableOnInteraction: false,
+      },
+      watchSlidesProgress: true,
+      observer: true,
+      observeParents: true,
+    });
+  };
   const allSliders = document.querySelectorAll("[data-modal-swiper]");
   allSliders.forEach((slider) => buildSwiperSlider(slider));
 
-  // ## Fade in modal
-  $("[data-modal]").fadeIn(1000);
-}
+  if ($.modal.isActive() == true) {
+    $("body").addClass("--overlay");
+    $("body").addClass("--pointer-none");
+  }
+  setTimeout(function () {
+    $("body").removeClass("--pointer-none");
+  }, 1500);
 
-// ## Close modal
-$("[data-modal-close]").each(function () {
-  $(this).on("click", function () {
-    $("[data-modal]").fadeOut(1000);
-    document.body.classList.remove("--disable-scroll");
-  });
+  return false;
 });
 
-// ===== fade content =====
-function fadeEffect() {
-  var scrollTop = $(window).scrollTop();
-  var bottom = scrollTop + $(window).height();
-  $(".u-fade").each(function () {
+// ##
+$("[data-modal-close]").on("click", function () {
+  $("body").removeClass("--overlay");
+  $("body").removeClass("--pointer-none");
+  lenis.start();
+});
+
+// ===== scroll fade content =====
+$(window).on("pageshow scroll", function () {
+  let scrollTop = $(window).scrollTop();
+  let bottom = scrollTop + $(window).height();
+
+  $(".ufade").each(function () {
     if (bottom > $(this).offset().top + 150) {
-      $(this).addClass("--show");
-    } else {
-      $(this).removeClass("--show");
+      $(this).addClass("fadein");
     }
   });
-}
-
-$(window).on("pageshow scroll", function () {
-  fadeEffect();
-})
+});
 
 // ===== lazy loading =====
 const ll = new LazyLoad({
