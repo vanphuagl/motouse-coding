@@ -477,6 +477,14 @@
     }
 
     &_items {
+      cursor: pointer;
+
+      &:hover {
+        .overlay {
+          opacity: 1;
+        }
+      }
+
       figure {
         display: block;
         z-index: 1;
@@ -484,6 +492,7 @@
         height: 100%;
         padding-bottom: calc(305 / 305 * 100%);
         background-color: #000;
+        pointer-events: none;
 
         img {
           position: absolute;
@@ -509,13 +518,6 @@
       height: 100%;
       cursor: pointer;
       aspect-ratio: 1/1;
-
-      &:hover {
-        .overlay {
-          opacity: 1;
-          pointer-events: auto;
-        }
-      }
 
       .overlay {
         position: absolute;
@@ -600,7 +602,6 @@
         .overlay {
           opacity: 1;
           background: none;
-          pointer-events: auto;
 
           &_content {
             display: none;
@@ -957,12 +958,17 @@
 
       display: grid;
       grid-template-columns: 50% 50%;
+
+      @include maxW(1023px) {
+        display: block;
+        overflow: auto;
+      }
     }
 
     &_swiper {
       position: relative;
       width: 100%;
-      height: 100%;
+      height: 100vh;
 
       figure {
         display: block;
@@ -982,47 +988,244 @@
         }
       }
 
-      .swiper-pagination {
-        bottom: 40px;
-        right: auto;
-        padding: 0 40px;
-        text-align: left;
-        display: flex;
+      @include maxW(1023px) {
+        height: auto;
+        figure {
+          padding-bottom: calc(552 / 414 * 100%);
+        }
+      }
+    }
+
+    &_pagination {
+      position: absolute;
+      bottom: 40px;
+      right: auto;
+      padding: 0 40px;
+      text-align: left;
+      display: flex;
+      gap: 10px;
+      z-index: 1;
+
+      .swiper-pagination-bullet {
+        width: 30px;
+        height: 1px;
+        border-radius: 0;
+        position: relative;
+        overflow: hidden;
+        background: rgb(255 255 255 / 0.3);
+        opacity: 1;
+        margin: 0;
+
+        &:before {
+          content: "";
+          display: block;
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+        }
+      }
+
+      .swiper-pagination-bullet-active::before {
+        background: #fff;
+        animation: 6s cubic-bezier(0.3, 0, 0.3, 1) forwards slide-progress;
+      }
+
+      @keyframes slide-progress {
+        0% {
+          transform: translateX(-100%);
+        }
+        100% {
+          transform: translateX(0);
+        }
+      }
+
+      @include maxW(1023px) {
+        bottom: 22px;
+        padding: 0 22px;
         gap: 10px;
+      }
+    }
 
-        .swiper-pagination-bullet {
-          width: 30px;
-          height: 1px;
-          border-radius: 0;
-          position: relative;
+    &_right {
+      width: 100%;
+      padding: 157px 76px;
+      position: relative;
+
+      @include maxW(1023px) {
+        padding: 42px 22px 105px;
+      }
+    }
+
+    &_content {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    &_heading {
+      position: absolute;
+      top: 0;
+      right: 0;
+
+      h3 {
+        font-size: 2.2rem;
+        font-weight: 300;
+        letter-spacing: 0.528px;
+        writing-mode: vertical-lr;
+      }
+
+      @include maxW(1023px) {
+        position: unset;
+
+        h3 {
+          font-size: 1.8rem;
+          letter-spacing: 0.72px;
+          line-height: 1.58;
+          writing-mode: initial;
+        }
+      }
+    }
+
+    &_desc {
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: center;
+      gap: 20px;
+      width: 90%;
+
+      p {
+        font-size: 1.6rem;
+        letter-spacing: 0.288px;
+        writing-mode: vertical-lr;
+      }
+
+      @include maxW(1023px) {
+        display: block;
+        width: 100%;
+        margin-top: 40px;
+
+        p {
+          font-size: 1.4;
+          letter-spacing: 0.56px;
+          line-height: 1.8;
+          writing-mode: initial;
+        }
+      }
+    }
+
+    &_bottom {
+      position: absolute;
+      bottom: 60px;
+      left: 50%;
+      transform: translateX(-50%);
+
+      @include maxW(1023px) {
+        position: fixed;
+        bottom: 10px;
+        left: 0;
+        transform: none;
+        width: 100%;
+        padding: 0 10px;
+        z-index: 5;
+      }
+    }
+
+    &_btn {
+      display: block;
+      position: relative;
+      cursor: pointer;
+
+      p,
+      a {
+        font-size: 1.5rem;
+        letter-spacing: 0.6px;
+      }
+
+      p {
+        display: block;
+        background: $black-cl;
+        width: 250px;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        color: $white-cl;
+        border-radius: 5px;
+      }
+
+      .dropdown {
+        min-width: 100%;
+        padding: 20px;
+        position: absolute;
+        bottom: 47px;
+        background: $black-cl;
+        z-index: -1;
+        transition: 0.5s padding;
+        border-radius: 5px;
+        border-bottom-left-radius: unset;
+        border-bottom-right-radius: unset;
+
+        & > * {
           overflow: hidden;
-          background: rgb(255 255 255 / 0.3);
-          opacity: 1;
-          margin: 0;
+          width: 100%;
+          height: 50px;
+          background: $white-cl;
+          line-height: 50px;
+          text-align: center;
+          transition: 0.5s height cubic-bezier(0.73, 0.32, 0.34, 1.5),
+            0.5s padding cubic-bezier(0.73, 0.32, 0.34, 1.5),
+            0.5s margin cubic-bezier(0.73, 0.32, 0.34, 1.5), 0.5s 0.2s color,
+            0.2s background-color;
 
-          &:before {
-            content: "";
-            display: block;
-            position: absolute;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            left: 0;
+          &:first-child {
+            margin-bottom: 20px;
           }
         }
+      }
 
-        .swiper-pagination-bullet-active::before {
-          background: #fff;
-          animation: 6s cubic-bezier(0.3, 0, 0.3, 1) forwards slide-progress;
+      &:not(:hover) > .dropdown {
+        padding: 0;
+        margin: 0;
+        transition: 2s padding;
+      }
+
+      &:not(:hover) > .dropdown > * {
+        visibility: hidden;
+        height: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+        margin-bottom: 0;
+        transition: 0.5s 0.1s height, 0.5s 0.1s padding, 0.5s 0.1s margin,
+          0.3s color, 0.6s visibility;
+      }
+
+      // &.active {
+      //   .dropdown {
+      //     padding: 20px;
+      //   }
+
+      //   .dropdown > * {
+      //     height: 50px;
+      //     visibility: visible;
+
+      //     &:first-child {
+      //       margin-bottom: 20px;
+      //     }
+      //   }
+      // }
+
+      @include maxW(1023px) {
+        p,
+        a {
+          font-size: 1.4rem;
+          letter-spacing: 0.56px;
         }
 
-        @keyframes slide-progress {
-          0% {
-            transform: translateX(-100%);
-          }
-          100% {
-            transform: translateX(0);
-          }
+        p {
+          width: 100%;
+          height: 55px;
+          line-height: 55px;
         }
       }
     }

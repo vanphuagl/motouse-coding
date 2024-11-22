@@ -65,6 +65,7 @@
   z-index: 99;
   background-color: $main-bg-cl;
   will-change: opacity;
+  overflow: hidden;
   // transition: all 0.35s cubic-bezier(0.455, 0.03, 0.515, 0.955);
 
   // opacity: 0;
@@ -104,28 +105,35 @@
     .modal-button-prev {
       cursor: pointer;
     }
-    
-    .swiper-button-next,
-    .swiper-button-prev {
-      position: unset;
-      width: auto;
-      height: auto;
-      margin: 0;
 
-      &:after {
-        content: "";
+    @include maxW(1023px) {
+      margin-top: 48px;
+      position: initial;
+      flex-direction: initial;
+      gap: 12px;
+      transform: none;
+
+      .modal-button-prev {
+        margin-right: 12px;
+      }
+
+      .modal-button-next,
+      .modal-button-prev {
+        display: inline-block;
       }
     }
   }
 
   &_close {
-    position: absolute;
+    position: fixed;
     top: 60px;
     right: 67px;
     z-index: 2;
     cursor: pointer;
     height: 40px;
     width: 40px;
+    mix-blend-mode: difference;
+    filter: invert(1);
 
     span {
       &:before,
@@ -145,6 +153,21 @@
 
       &:after {
         transform: rotate(-45deg);
+      }
+    }
+
+    @include maxW(1023px) {
+      top: 22px;
+      right: 22px;
+      width: 20px;
+      height: 20px;
+
+      span {
+        &:before,
+        &:after {
+          top: 10px;
+          width: 20px;
+        }
       }
     }
   }

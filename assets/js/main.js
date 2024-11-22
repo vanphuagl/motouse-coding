@@ -31,7 +31,6 @@ const init = () => {
     },
   });
   // # init swiper product
-
 };
 
 // ===== add event on multiple element =====
@@ -51,6 +50,14 @@ const appHeight = () => {
     "--app-height",
     `${document.documentElement.clientHeight}px`
   );
+  //
+  const windowHeight = Math.max(
+    document.documentElement.clientHeight,
+    window.innerHeight || 0
+  );
+  if (window.innerWidth < 1024) {
+    document.querySelector("[data-modal]").style.height = windowHeight + "px";
+  }
 };
 window.addEventListener("resize", appHeight);
 
@@ -59,7 +66,7 @@ const lenis = new Lenis({
   lerp: 0.05,
   smoothWheel: true,
 });
-lenis.on("scroll", (e) => { });
+lenis.on("scroll", (e) => {});
 function raf(time) {
   lenis.raf(time);
   requestAnimationFrame(raf);
@@ -216,12 +223,15 @@ for (let i = 0; i < accordion.length; i++) {
 // ===== popup product =====
 let index = 0;
 let swiperProduct;
-
-const lightBox = document.querySelector("[data-modal]");
-const imgLightbox = document.querySelectorAll("[data-modal-toggler]");
+const [modalToggler, nextModal, prevModal] = [
+  document.querySelectorAll("[data-modal-toggler]"),
+  document.querySelectorAll(".custom-btn-next"),
+  document.querySelectorAll(".custom-btn-prev"),
+];
 
 const swiperImages = () => {
   swiperProduct = new Swiper("[data-product-swiper]", {
+    init: false,
     loop: true,
     speed: 600,
     fadeEffect: { crossFade: true },
@@ -232,45 +242,82 @@ const swiperImages = () => {
       nextEl: ".modal-button-next",
       prevEl: ".modal-button-prev",
     },
-  })
-}
+    observer: true,
+    observeParents: true,
+  });
+};
 swiperImages();
-imgLightbox.forEach((item) =>
-  item.addEventListener("click", handleZoomImage)
-);
 
-function handleZoomImage(event) {
-  let image = event.target.parentElement.getAttribute("data-modal-toggler");
-  index = [...imgLightbox].findIndex(
-    (item) => item.getAttribute("data-modal-toggler") === image
-  );
-  swiperProduct.slideTo(index + 1, 0);
-  // #
-  const swiperModalProduct = new Swiper("[data-modal-swiper]", {
+// ## Controls modal
+// prevModal.forEach((item) =>
+//   item.addEventListener("click", () => {
+//     swiperProduct.slideNext();
+//   })
+// );
+// nextModal.forEach((item) =>
+//   item.addEventListener("click", () => {
+//     swiperProduct.slideNext();
+//   })
+// );
+
+// ## build Swiper All
+const buildSwiperSlider = (sliderElm) => {
+  const sliderIdentifier = sliderElm.dataset.modalSwiper;
+  return new Swiper(`[data-modal-swiper="${sliderIdentifier}"]`, {
     speed: 1000,
     fadeEffect: { crossFade: true },
     effect: "fade",
     slidesPerView: 1,
+    initialSlide: 0,
     allowTouchMove: false,
     pagination: {
-      el: ".swiper-pagination",
+      el: `.swiper-pagination-m${sliderIdentifier}`,
       clickable: true,
     },
     autoplay: {
-      delay: 4000,
+      delay: 3500,
       disableOnInteraction: false,
     },
     watchSlidesProgress: true,
     observer: true,
-  })
-  $("[data-modal]").fadeIn(500);
+    observeParents: true,
+  });
+};
+
+// ## Action thumb product
+modalToggler.forEach((item) => item.addEventListener("click", handleZoomImage));
+function handleZoomImage(event) {
+  // ## show slide initial
+  // lenis.stop();
+  document.body.classList.add("--disable-scroll");
+  swiperProduct.init();
+  let image = event.target.getAttribute("key-items");
+  index = [...modalToggler].findIndex(
+    (item) => item.getAttribute("key-items") === image
+  );
+  console.log("index", image, index);
+  swiperProduct.slideToLoop(index, 0);
+
+  // ## Loop over all of the fetched sliders and apply Swiper on each one.
+  const allSliders = document.querySelectorAll("[data-modal-swiper]");
+  allSliders.forEach((slider) => buildSwiperSlider(slider));
+
+  // ## Fade in modal
+  $("[data-modal]").fadeIn(1000);
 }
 
+// ## Close modal
 $("[data-modal-close]").each(function () {
   $(this).on("click", function () {
-    $("[data-modal]").fadeOut(500);
+    $("[data-modal]").fadeOut(1000);
+    document.body.classList.remove("--disable-scroll");
   });
 });
+
+// ===== button animation =====
+// $(".detail_btn").on("click", function () {
+//   $(this).addClass("active");
+// })
 
 // ===== lazy loading =====
 const ll = new LazyLoad({
