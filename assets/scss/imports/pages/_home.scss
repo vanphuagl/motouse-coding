@@ -4,6 +4,7 @@
 
 .homepage {
   background-image: url(/assets/img/bg-noise.webp);
+  background-size: 100px 100px;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -56,7 +57,7 @@
       width: 100%;
       height: 100%;
       z-index: -1;
-      background-color: rgba($color: #000000, $alpha: 0.3);
+      background-color: rgba($color: #000000, $alpha: 0.5);
     }
 
     &_center {
@@ -87,7 +88,7 @@
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
-      gap: 45px;
+      gap: 22px;
 
       @include maxW(1023px) {
         bottom: 22px;
@@ -107,6 +108,7 @@
         margin-top: 5px;
         text-decoration: underline;
         text-underline-offset: 6px;
+        padding-bottom: 2px;
       }
 
       @include maxW(1023px) {
@@ -201,7 +203,7 @@
 
         p {
           font-size: 1.8rem;
-          letter-spacing: 0.36px;
+          letter-spacing: 2px;
           writing-mode: vertical-rl;
         }
       }
@@ -221,7 +223,7 @@
           p {
             font-size: 1.5rem;
             letter-spacing: 0.6px;
-            line-height: 1.73;
+            line-height: 1.85;
             writing-mode: initial;
           }
         }
@@ -253,7 +255,7 @@
     &_inner {
       position: relative;
       margin-top: 45px;
-      width: 89.51%;
+      width: 100%;
 
       @include maxW(1023px) {
         width: 100%;
@@ -279,7 +281,7 @@
       h2 {
         font-size: 2.2rem;
         font-weight: 300;
-        letter-spacing: 0.88px;
+        letter-spacing: 2px;
         line-height: 1.55;
         writing-mode: vertical-lr;
       }
@@ -380,12 +382,12 @@
       flex-direction: column;
       justify-content: center;
       height: auto;
-      gap: 50px;
+      gap: 60px;
 
       h3 {
         font-size: 1.8rem;
         font-weight: 300;
-        letter-spacing: 0.36px;
+        letter-spacing: 2px;
       }
 
       @include maxW(1023px) {
@@ -403,7 +405,7 @@
     &_content {
       p {
         font-size: 1.6rem;
-        letter-spacing: 0.288px;
+        letter-spacing: 2px;
         margin-left: 15px;
 
         &:last-child {
@@ -412,13 +414,19 @@
       }
 
       @include maxW(1023px) {
-        margin-top: 20px;
+        margin-top: 25px;
 
         p {
           font-size: 1.4rem;
-          letter-spacing: -0.1px;
+          letter-spacing: 0.6px;
           line-height: 2;
           margin-left: 0;
+        }
+      }
+
+      @include maxW(375px) {
+        p {
+          font-size: 1.3rem;
         }
       }
     }
@@ -444,7 +452,7 @@
       h2 {
         font-size: 2rem;
         font-weight: 300;
-        letter-spacing: 0.8px;
+        letter-spacing: 2px;
         line-height: 1.55;
         writing-mode: vertical-rl;
       }
@@ -536,7 +544,7 @@
 
         &_content {
           position: absolute;
-          top: 40px;
+          top: 45px;
           left: 50%;
           transform: translateX(-50%);
           height: auto;
@@ -548,7 +556,7 @@
           p {
             font-size: 1.8rem;
             font-weight: 300;
-            letter-spacing: 0.36px;
+            letter-spacing: 2px;
             color: $white-cl;
             text-align: left;
           }
@@ -749,6 +757,12 @@
 
         .instagram {
           margin-top: initial;
+
+          svg {
+            width: 15px;
+            height: 15px;
+            margin-right: 5px;
+          }
         }
       }
     }
@@ -774,10 +788,10 @@
       }
 
       @include maxW(1023px) {
-        margin-top: 25px;
+        margin-top: 30px;
 
         h3,
-        td,
+        th,
         td {
           font-size: 1.4rem;
           letter-spacing: 0.56px;
@@ -838,7 +852,7 @@
       }
 
       &_content {
-        width: 90%;
+        width: 93%;
         padding-top: 15px;
         padding-bottom: 45px;
 
@@ -846,7 +860,7 @@
           margin-top: 27px;
 
           td:nth-child(2) {
-            padding: 0 20px 0 30px;
+            padding: 0 20px;
           }
         }
 
@@ -855,8 +869,8 @@
         p {
           font-size: 1.4rem;
           font-weight: 300;
-          letter-spacing: 0.56px;
-          line-height: 1.56;
+          letter-spacing: 2px;
+          line-height: 1.8;
           font-feature-settings: "palt" 1;
         }
 
@@ -875,8 +889,8 @@
         .notes {
           margin-top: 28px;
           font-size: 1.2rem;
-          letter-spacing: 0.48px;
-          line-height: 1.58;
+          letter-spacing: 1.3px;
+          line-height: 1.7;
           opacity: 0.7;
         }
       }
@@ -889,7 +903,11 @@
 
       @include maxW(1023px) {
         &_btn {
-          padding: 20px 0;
+          padding: 24px 0 26px;
+
+          .title {
+            font-size: 1.4rem;
+          }
 
           .plus {
             right: 12px;
@@ -906,14 +924,14 @@
           td,
           p {
             font-size: 1.3rem;
-            letter-spacing: 0.52px;
-            line-height: 1.51;
+            letter-spacing: 1.5px;
+            line-height: 1.7;
           }
 
           .notes {
             margin-top: 24px;
             font-size: 1.1rem;
-            letter-spacing: 0.44px;
+            letter-spacing: 1px;
           }
         }
       }
@@ -936,6 +954,8 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        border-radius: 5px;
+        padding-bottom: 3px;
       }
 
       @include maxW(1023px) {

@@ -24,7 +24,7 @@
   }
 
   &_wrapper {
-    margin-top: 8px;
+    margin-top: 10px;
     display: flex;
     justify-content: space-between;
     gap: 20px;
@@ -40,12 +40,13 @@
 
     @include maxW(1023px) {
       display: block;
+      margin-top: 25px;
 
       a,
       p,
       span {
         font-size: 1.3rem;
-        line-height: 1.65;
+        line-height: 1.85;
         letter-spacing: 0.52px;
         display: block;
       }
@@ -54,15 +55,15 @@
 
   &_left {
     span {
-      margin-right: 10px;
-      margin-left: 20px;
+      margin-right: 5px;
+      margin-left: 5px;
     }
   }
 
   &_right {
     display: flex;
     justify-content: space-between;
-    gap: 65px;
+    gap: 50px;
 
     .group {
       display: flex;
@@ -76,7 +77,7 @@
 
       .group {
         flex-direction: column;
-        gap: 5px;
+        gap: 0;
       }
     }
   }

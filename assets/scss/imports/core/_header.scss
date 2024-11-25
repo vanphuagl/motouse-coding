@@ -12,6 +12,8 @@
       p {
         color: $black-cl;
         border-color: $black-cl;
+        background-image: url(/assets/img/bg-noise.webp);
+        background-size: 100px 100px;
       }
     }
 
@@ -61,7 +63,7 @@
 
       li a {
         font-size: 1.6rem;
-        letter-spacing: 0.64px;
+        letter-spacing: 2px;
         color: $black-cl;
         writing-mode: vertical-rl;
       }
@@ -96,7 +98,7 @@
 
       li a {
         font-size: 1.6rem;
-        letter-spacing: 0.64px;
+        letter-spacing: 2px;
         color: $white-cl;
         writing-mode: vertical-rl;
       }
@@ -124,16 +126,18 @@
 
       ul {
         background-image: url(/assets/img/bg-noise.webp);
+        background-size: 100px 100px;
         width: 100%;
         height: 100%;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        gap: 25px;
+        gap: 30px;
 
         li a {
           color: $black-cl;
           writing-mode: initial;
+          letter-spacing: 1px;
         }
       }
     }
