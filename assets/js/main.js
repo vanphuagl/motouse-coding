@@ -3,6 +3,7 @@
 // ===== init =====
 const init = () => {
   history.scrollRestoration = "manual";
+  document.body.classList.remove("--overlay");
   // # app-height
   appHeight();
   // # init video
@@ -48,7 +49,14 @@ const appHeight = () => {
     "--app-height",
     `${document.documentElement.clientHeight}px`
   );
-  //
+  // height menu
+  const windowHeight = Math.max(
+    document.documentElement.clientHeight,
+    window.innerHeight || 0
+  );
+  if (window.innerWidth < 1024) {
+    document.querySelector("[data-menu]").style.height = windowHeight + "px";
+  }
 };
 window.addEventListener("resize", appHeight);
 
@@ -233,10 +241,14 @@ $("[data-modal]").on("click", function (event) {
       effect: "fade",
       slidesPerView: 1,
       initialSlide: 0,
-      allowTouchMove: false,
       pagination: {
         el: `.swiper-pagination`,
         clickable: true,
+        renderBullet: function (index, className) {
+          return (
+            '<div class="' + className + '"><span class="action"></span></div>'
+          );
+        },
       },
       autoplay: {
         delay: 3500,
@@ -245,6 +257,14 @@ $("[data-modal]").on("click", function (event) {
       watchSlidesProgress: true,
       observer: true,
       observeParents: true,
+      breakpoints: {
+        0: {
+          allowTouchMove: true,
+        },
+        1024: {
+          allowTouchMove: false,
+        },
+      },
     });
   };
   const allSliders = document.querySelectorAll("[data-modal-swiper]");
@@ -266,6 +286,13 @@ $("[data-modal-close]").on("click", function () {
   $("body").removeClass("--overlay");
   $("body").removeClass("--pointer-none");
   lenis.start();
+});
+
+// ##
+$(".modal-btn").on("click", function () {
+  if (window.innerWidth < 1024) {
+    $(this).toggleClass("action");
+  }
 });
 
 // ===== scroll fade content =====
