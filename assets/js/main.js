@@ -57,7 +57,7 @@ const lenis = new Lenis({
   lerp: 0.05,
   smoothWheel: true,
 });
-lenis.on("scroll", (e) => { });
+lenis.on("scroll", (e) => {});
 function raf(time) {
   lenis.raf(time);
   requestAnimationFrame(raf);
@@ -75,6 +75,7 @@ const initLoading = function () {
   setTimeout(() => {
     loadingLogo.classList.add("is-fade");
     setTimeout(() => {
+      // $("#js-play").get(0).play();
       $(".js-play").get(0).play();
       $(".js-play").get(1).play();
     }, 1000);
@@ -94,10 +95,10 @@ const initVideo = function () {
   // autoplay attribute
   if (window.innerWidth > 1023) {
     vCont.innerHTML =
-      '<video class="js-play" playsinline muted loop><source src="/assets/img/bg-video-pc.mp4"></video>';
+      '<video id="js-play" playsinline muted loop><source src="/assets/img/bg-video-pc.mp4"></video>';
   } else {
     vCont.innerHTML =
-      '<video class="js-play" playsinline muted loop><source src="/assets/img/bg-video-sp.mp4"></video>';
+      '<video id="js-play" playsinline muted loop><source src="/assets/img/bg-video-sp.mp4"></video>';
   }
 };
 
