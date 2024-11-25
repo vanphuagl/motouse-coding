@@ -222,6 +222,41 @@ for (let i = 0; i < accordion.length; i++) {
 }
 
 // ===== modal product =====
+let modalSwiper;
+modalSwiper = new Swiper(`[data-modal-swiper]`, {
+  init: false,
+  loop: true,
+  speed: 1000,
+  fadeEffect: { crossFade: true },
+  effect: "fade",
+  slidesPerView: 1,
+  initialSlide: 0,
+  pagination: {
+    el: `.swiper-pagination`,
+    clickable: true,
+    renderBullet: function (index, className) {
+      return (
+        '<div class="' + className + '"><span class="action"></span></div>'
+      );
+    },
+  },
+  autoplay: {
+    delay: 3500,
+    disableOnInteraction: false,
+  },
+  watchSlidesProgress: true,
+  observer: true,
+  observeParents: true,
+  breakpoints: {
+    0: {
+      allowTouchMove: true,
+    },
+    1024: {
+      allowTouchMove: true,
+    },
+  },
+});
+
 $("[data-modal]").on("click", function (event) {
   event.preventDefault();
   if (window.innerWidth > 1023) {
@@ -233,42 +268,10 @@ $("[data-modal]").on("click", function (event) {
     fadeDelay: 0.6,
   });
 
-  const buildSwiperSlider = (sliderElm) => {
-    // const sliderIdentifier = sliderElm.dataset.modalSwiper;
-    return new Swiper(`[data-modal-swiper]`, {
-      speed: 1000,
-      fadeEffect: { crossFade: true },
-      effect: "fade",
-      slidesPerView: 1,
-      initialSlide: 0,
-      pagination: {
-        el: `.swiper-pagination`,
-        clickable: true,
-        renderBullet: function (index, className) {
-          return (
-            '<div class="' + className + '"><span class="action"></span></div>'
-          );
-        },
-      },
-      autoplay: {
-        delay: 3500,
-        disableOnInteraction: false,
-      },
-      watchSlidesProgress: true,
-      observer: true,
-      observeParents: true,
-      breakpoints: {
-        0: {
-          allowTouchMove: true,
-        },
-        1024: {
-          allowTouchMove: false,
-        },
-      },
-    });
-  };
-  const allSliders = document.querySelectorAll("[data-modal-swiper]");
-  allSliders.forEach((slider) => buildSwiperSlider(slider));
+  modalSwiper.forEach((item, index) => {
+    modalSwiper[index].init();
+    modalSwiper[index].slideTo(0, 0);
+  });
 
   if ($.modal.isActive() == true) {
     $("body").addClass("--overlay");
