@@ -292,11 +292,16 @@ $("[data-modal-close]").on("click", function () {
 });
 
 // ##
-$(".modal-btn").on("click", function () {
-  if (window.innerWidth < 1024) {
-    $(this).toggleClass("action");
-  }
-});
+
+if (window.innerWidth < 1024) {
+  $(".modal-btn").on("click", function () {
+    $(this).children(".dropdown").stop().slideToggle("slow");
+  });
+} else {
+  $(".modal-btn").hover(function () {
+    $(this).children(".dropdown").slideToggle("slow");
+  });
+}
 
 // ===== scroll fade content =====
 $(window).on("pageshow scroll", function () {
