@@ -252,7 +252,7 @@ modalSwiper = new Swiper(`[data-modal-swiper]`, {
       allowTouchMove: true,
     },
     1024: {
-      allowTouchMove: true,
+      allowTouchMove: false,
     },
   },
 });
